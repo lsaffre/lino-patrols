@@ -119,7 +119,7 @@ class Patrol(dd.Model):
     area = models.ForeignKey(Area)
     team = models.ForeignKey(Team)
     remark = models.TextField(blank=True)
-    state = PatrolStates.field()
+    state = PatrolStates.field(default=PatrolStates.scheduled)
     
 class Patrols(dd.Table):
     model = Patrol
