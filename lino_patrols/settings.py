@@ -24,7 +24,7 @@ class Site(Site):
     url = setup_info['url'] # "http://code.google.com/p/lino-welfare/"
     verbose_name = "Lino Patrols"
     
-    demo_fixtures = 'std demo demo2'.split()
+    demo_fixtures = 'std few_countries few_cities demo demo2'.split()
     
     #~ migration_module = 'lino_patrols.migrate'
     
@@ -53,8 +53,8 @@ class Site(Site):
         yield 'django.contrib.contenttypes'
         yield 'lino.modlib.users'
         yield 'lino.modlib.changes'
-        #~ yield 'lino.modlib.countries'
-        #~ yield 'lino.modlib.contacts'
+        yield 'lino.modlib.countries'
+        yield 'lino.modlib.contacts'
         
         yield 'lino_patrols'
       

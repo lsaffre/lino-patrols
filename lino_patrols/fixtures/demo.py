@@ -28,7 +28,7 @@ from django.utils.translation import ugettext as _
 
 
 from lino import dd
-from lino import mixins
+from lino.utils import mti
 from lino.utils import i2d, Cycler
 from lino.utils.instantiator import Instantiator
 from lino.core.dbutils import resolve_model
@@ -42,8 +42,29 @@ users = dd.resolve_app('users')
 patrols = dd.resolve_app('lino_patrols')
 Team = dd.resolve_model('lino_patrols.Team')
 Area = dd.resolve_model('lino_patrols.Area')
+Employee = dd.resolve_model('lino_patrols.Employee')
+
+W = patrols.WorkDayTypes.workday
+L = patrols.WorkDayTypes.leave
+H = patrols.WorkDayTypes.holiday
+S = patrols.WorkDayTypes.sick
+WDT = Cycler(
+  W,W,W,W,W,L,L,
+  S,W,W,W,W,L,L)
 
 def objects():
+    bd = i2d(19500203)
+    for p in contacts.Person.objects.filter(country__isocode="BE"):
+        yield mti.insert_child(p,Employee,birth_date=bd)
+        bd += datetime.timedelta(days=234)
+
+    d = settings.SITE.demo_date(-10)
+    for i in range(30):
+        for e in Employee.objects.all():
+            yield patrols.WorkDay(date=d,employee=e,type=WDT.pop())
+        d += ONE_DAY
+        WDT.pop()
+        
     yield Team(name="One")
     yield Team(name="Two")
     yield Team(name="Three")
