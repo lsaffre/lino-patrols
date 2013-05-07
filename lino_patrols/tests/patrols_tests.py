@@ -42,7 +42,7 @@ from django.core.exceptions import ValidationError
 
 from lino import dd
 from lino.utils import i2d
-from djangosite.utils.test import RemoteAuthTestCase
+from djangosite.utils.djangotest import RemoteAuthTestCase
 
 contacts = dd.resolve_app('contacts')
 
