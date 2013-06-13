@@ -59,7 +59,7 @@ class Site(Site):
         yield 'lino_patrols'
       
 
-SITE = Site(globals())
+#~ SITE = Site(globals())
 
 LOGGING['logger_names'] = 'djangosite north lino lino_patrols'
 #~ LOGGING.update(loggers='djangosite north lino lino_welfare')
@@ -67,3 +67,4 @@ LOGGING['logger_names'] = 'djangosite north lino lino_patrols'
 
 #~ TIME_ZONE = 'Europe/Brussels'
 #~ TIME_ZONE = None
+#~ print 20130613, __file__

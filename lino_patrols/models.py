@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-## Copyright 2008-2013 Luc Saffre
+## Copyright 2013 Luc Saffre
 ## This file is part of the Lino project.
 ## Lino is free software; you can redistribute it and/or modify 
 ## it under the terms of the GNU General Public License as published by
@@ -13,7 +13,7 @@
 ## along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
 """
-Contains PCSW-specific models and tables that have not yet been 
+Contains application-specific models and tables that have not yet been 
 moved into a separate module because they are really very PCSW specific.
 
 """
@@ -45,10 +45,21 @@ from lino.core import actions
 contacts = dd.resolve_app('contacts')
 countries = dd.resolve_app('countries')
 
-
-
 #~ class Employee(dd.Human,dd.Born):
 class Employee(contacts.Person,dd.Born):
+    
+    class Meta:
+        verbose_name = _("Employee") 
+        verbose_name_plural = _("Employees") 
+    
+    is_member = models.BooleanField(_("Member"),default=True)
+    is_chef = models.BooleanField(_("Chef"),default=False)
+    #~ member_from = models.DateField(verbose_name=_("Active from"),null=True,blank=True)
+    #~ member_until = models.DateField(verbose_name=_("until"),null=True,blank=True)
+    
+    #~ chef_from = models.DateField(verbose_name=_("Active from"),null=True,blank=True)
+    #~ chef_until = models.DateField(verbose_name=_("until"),null=True,blank=True)
+
     def get_workday(self,base,offset=0):
         if base is None: 
             return None
@@ -64,8 +75,9 @@ class Employees(dd.Table):
     model = Employee
     column_names = "last_name first_name birth_date"
     detail_layout = """
-    id first_name last_name gender birth_date
-    WorkDaysByEmployee
+    id first_name last_name gender birth_date 
+    is_member is_chef
+    MembersByEmployee TeamsByChef WorkDaysByEmployee
     """
     
 class Area(dd.BabelNamed):
@@ -90,17 +102,60 @@ class Team(dd.BabelNamed):
     
     active_from = models.DateField(verbose_name=_("Active from"),null=True,blank=True)
     active_until = models.DateField(verbose_name=_("until"),null=True,blank=True)
+    
+    chef = models.ForeignKey(Employee,verbose_name=_("Team leader"))
 
+    @dd.displayfield(_("Team"))
+    def info(self,ar):
+        return ar.obj2html(self)
+        
 class Teams(dd.Table):
     model = Team
     detail_layout = """
-    id name active_from active_until
-    PatrolsByTeam
+    id name 
+    active_from active_until chef
+    MembersByTeam PatrolsByTeam
     """
+
+class TeamsByChef(Teams):
+    label = _("Responsible for")
+    master_key = 'chef'
+    auto_fit_column_widths = True
+    column_names = "info"
+    
+    
+class Member(dd.Model):
+    class Meta:
+        verbose_name = _("Member") 
+        verbose_name_plural = _("Members") 
+    #~ patrol = models.ForeignKey(Patrol)
+    team = models.ForeignKey(Team)
+    employee = models.ForeignKey(Employee)
+    
+    def __unicode__(self):
+        return "%s %s" % (self.employee,self.team)
+    
+    
+class Members(dd.Table):
+    help_text = _("A member is when a given employee is part of a given team.")
+    model = Member
+    
+#~ class MembersByPatrol(Members):
+    #~ master_key = 'patrol'    
+    #~ 
+class MembersByTeam(Members):
+    master_key = 'team'
+    auto_fit_column_widths = True
+    
+class MembersByEmployee(Members):
+    master_key = 'employee'    
+    auto_fit_column_widths = True
+    label = _("Member of")
     
 
+
 class PatrolStates(dd.ChoiceList):
-    verbose_name = _("PatrolS tate")
+    verbose_name = _("Patrol State")
     verbose_name_plural = _("Patrol States")
     
 add = PatrolStates.add_item
@@ -118,21 +173,26 @@ class Patrol(dd.Model):
     date = models.DateField(verbose_name=_("Date"))
     area = models.ForeignKey(Area)
     team = models.ForeignKey(Team)
-    remark = models.TextField(blank=True)
+    remark = models.TextField(_("Remark"),blank=True)
     state = PatrolStates.field(default=PatrolStates.scheduled)
     
+    def __unicode__(self):
+        return "%s %s %s" % (self.date,self.area,self.team)
+    
 class Patrols(dd.Table):
+    help_text = _("A patrol is when a given team works in a given area on a given day.")
     model = Patrol
     parameters = dict(
       dates_from = models.DateField(verbose_name=_("Dates from"),null=True,blank=True),
       dates_until = models.DateField(verbose_name=_("until"),null=True,blank=True),
     )
-    column_names = "date area team state"
+    column_names = "date area team state *"
+    hidden_columns = 'remark'
 
     detail_layout = """
     date area team state
     remark
-    ManningsByPatrol
+    WorkDaysByPatrol
     """
     
     @classmethod
@@ -158,27 +218,14 @@ class Patrols(dd.Table):
     
 class PatrolsByTeam(Patrols):
     master_key = 'team'    
+    hidden_columns = 'team remark'
+    auto_fit_column_widths = True
     
 class PatrolsByArea(Patrols):
     master_key = 'area'    
+    hidden_columns = 'area remark'
+    auto_fit_column_widths = True
     
-    
-class Manning(dd.Model):
-    class Meta:
-        verbose_name = _("Manning") 
-        verbose_name_plural = _("Mannings") 
-    patrol = models.ForeignKey(Patrol)
-    employee = models.ForeignKey(Employee)
-    
-    
-class Mannings(dd.Table):
-    model = Manning
-    
-class ManningsByPatrol(Mannings):
-    master_key = 'patrol'    
-    
-#~ class ManningsByEmployee(Mannings):
-    #~ master_key = 'employee'    
     
 
 if False:
@@ -224,7 +271,7 @@ class WorkDay(dd.Model):
                 #~ raise ValidationError("Workday without Patrol")
                 
     def __unicode__(self):
-        return unicode(self.type)
+        return "%s %s %s" % (self.date,self.employee,self.type)
     
 class WorkDays(dd.Table):
     model = WorkDay
@@ -240,6 +287,30 @@ def first_day_of_week(d):
     
 class WorkDaysByEmployee(WorkDays):
     master_key = 'employee'
+    auto_fit_column_widths = True
+    hidden_columns = 'id employee'
+    
+class WorkDaysByPatrol(WorkDays):
+    label = _("Presences")
+    master = Patrol
+    auto_fit_column_widths = True
+    column_names = 'employee type'
+    #~ hidden_columns = 'id employee'
+    #~ can_create = False
+    
+    @classmethod
+    def get_request_queryset(self,ar):
+        #~ logger.info("20121010 Clients.get_request_queryset %s",ar.param_values)
+        patrol = ar.master_instance
+        if patrol is None: return []
+        #~ qs = super(WorkDaysByPatrol,self).get_request_queryset(ar)
+        #~ el = [patrol.team.chef] + [m.employee for m in patrol.team.member_set.all()]
+        #~ el = [m.employee for m in patrol.team.member_set.all()]
+        el = patrol.team.member_set.values_list('employee__id',flat=True)
+        #~ return WorkDay.objects.filter(date=patrol.date,employee__in=el)
+        return WorkDay.objects.filter(date=patrol.date,employee__id__in=el)
+        #~ return qs
+            
     
     
 class EmployeesByWeek(Employees):
@@ -275,11 +346,6 @@ class EmployeesByWeek(Employees):
 
 MODULE_LABEL = _("Patrols")
 
-def setup_explorer_menu(site,ui,profile,m): 
-    m = m.add_menu("patrols",MODULE_LABEL)
-    m.add_action(WorkDayTypes)
-    m.add_action(WorkDays)
-
 def setup_main_menu(site,ui,profile,m): 
     m = m.add_menu("patrols",MODULE_LABEL)
     m.add_action(Areas)
@@ -287,5 +353,11 @@ def setup_main_menu(site,ui,profile,m):
     m.add_action(EmployeesByWeek)
     m.add_action(Teams)
     m.add_action(Patrols)
-    m.add_action(Mannings)
     #~ m.add_action(Days)
+
+def setup_explorer_menu(site,ui,profile,m): 
+    m = m.add_menu("patrols",MODULE_LABEL)
+    m.add_action(WorkDayTypes)
+    m.add_action(WorkDays)
+    m.add_action(Members)
+

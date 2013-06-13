@@ -43,6 +43,7 @@ patrols = dd.resolve_app('lino_patrols')
 Team = dd.resolve_model('lino_patrols.Team')
 Area = dd.resolve_model('lino_patrols.Area')
 Employee = dd.resolve_model('lino_patrols.Employee')
+Member = dd.resolve_model('lino_patrols.Member')
 
 W = patrols.WorkDayTypes.workday
 L = patrols.WorkDayTypes.leave
@@ -51,34 +52,61 @@ S = patrols.WorkDayTypes.sick
 WDT = Cycler(
   W,W,W,W,W,L,L,
   S,W,W,W,W,L,L)
+  
 
 def objects():
     bd = i2d(19500203)
     for p in contacts.Person.objects.filter(country__isocode="BE"):
         yield mti.insert_child(p,Employee,birth_date=bd)
-        bd += datetime.timedelta(days=234)
+        bd += datetime.timedelta(days=234) # experimental value
 
-    d = settings.SITE.demo_date(-10)
-    for i in range(30):
-        for e in Employee.objects.all():
-            yield patrols.WorkDay(date=d,employee=e,type=WDT.pop())
-        d += ONE_DAY
-        WDT.pop()
+    for i,e in enumerate(Employee.objects.all()):
+        if i % 4:
+            e.is_chef = True
+            e.is_member = False
+            yield e
         
-    yield Team(name="One")
-    yield Team(name="Two")
-    yield Team(name="Three")
-    
     yield Area(name="North")
     yield Area(name="East")
     yield Area(name="South")
     yield Area(name="West")
     
-    TEAMS = Cycler(patrols.Team.objects.all())
+    CHEFS = Cycler(Employee.objects.filter(is_chef=True))
+    MEMBERS = Cycler(Employee.objects.filter(is_member=True))
     AREAS = Cycler(patrols.Area.objects.all())
+    
+    MEMBERS_PER_TEAM = 2
+    
+    le = list(Employee.objects.filter(is_member=True))
+    while len(le) > MEMBERS_PER_TEAM:
+        name = '-'.join([o.last_name for o in le[:MEMBERS_PER_TEAM]])
+        t = Team(chef=CHEFS.pop(),name=name)
+        yield t
+        for e in le[:MEMBERS_PER_TEAM]:
+            yield Member(team=t,employee=e)
+        le = le[MEMBERS_PER_TEAM:]
+    
+    #~ yield Team(name="One",chef=CHEFS.pop())
+    #~ yield Team(name="Two",chef=CHEFS.pop())
+    #~ yield Team(name="Three",chef=CHEFS.pop())
+    
+    TEAMS = Cycler(patrols.Team.objects.all())
     
     d = settings.SITE.demo_date(-20)
     for i in range(50):
         yield patrols.Patrol(date=d,team=TEAMS.pop(),area=AREAS.pop())
         d += ONE_DAY
-
+        
+    for p in patrols.Patrol.objects.all():
+        yield patrols.WorkDay(date=p.date,employee=p.team.chef,type=WDT.pop())
+        for m in p.team.member_set.all():
+            yield patrols.WorkDay(date=p.date,employee=m.employee,type=WDT.pop())
+            
+            
+    #~ d = settings.SITE.demo_date(-10)
+    #~ for i in range(30):
+        #~ for e in Employee.objects.all():
+            #~ yield patrols.WorkDay(date=d,employee=e,type=WDT.pop())
+        #~ d += ONE_DAY
+        #~ WDT.pop()
+        
