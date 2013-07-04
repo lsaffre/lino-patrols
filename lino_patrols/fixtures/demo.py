@@ -33,8 +33,8 @@ from lino.utils import i2d, Cycler
 from lino.utils.instantiator import Instantiator
 from lino.core.dbutils import resolve_model
 from north.dbutils import babel_values
-from north.dbutils import babel_values as babelkw
-from north.dbutils import field2kw
+#~ from north.dbutils import babel_values as babelkw
+from north.dbutils import field2kw, babelkw
 
 
 contacts = dd.resolve_app('contacts')

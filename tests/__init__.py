@@ -17,7 +17,7 @@ from djangosite.utils.pythontest import TestCase
 
 
 class BaseTestCase(TestCase):
-    demo_settings_module = "lino_patrols.demo.settings"
+    demo_settings_module = "lino_patrols.settings.demo"
     #~ default_environ = dict(DJANGO_SETTINGS_MODULE="lino_patrols.demo.settings")
     project_root = ROOTDIR
     
@@ -26,7 +26,7 @@ class DemoTests(BaseTestCase):
     """
     $ python setup.py test -s tests.DemoTests.test_admin
     """
-    def test_admin(self): self.run_django_admin_test('lino_patrols.demo.settings')
+    def test_admin(self): self.run_django_admin_test('lino_patrols.settings.demo')
     
 
 

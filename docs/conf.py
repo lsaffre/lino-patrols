@@ -11,7 +11,7 @@
 import sys, os
 
 from atelier.sphinxconf import configure
-configure(globals(),'lino_patrols.demo.settings')
+configure(globals(),'lino_patrols.settings.demo')
 
 
 from django.conf import settings
