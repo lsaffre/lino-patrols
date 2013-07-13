@@ -46,13 +46,47 @@ from djangosite.utils.djangotest import RemoteAuthTestCase
 
 #~ contacts = dd.resolve_app('contacts')
 
+DEMO_OVERVIEW = """\
+10 applications: ui, sessions, about, contenttypes, users, changes, countries, contacts, lino_patrols, djangosite.
+30 models:
+======================================= ========= =======
+ Name                                    #fields   #rows
+--------------------------------------- --------- -------
+ changes.Change                          9         0
+ contacts.Company                        23        12
+ contacts.CompanyType                    7         11
+ contacts.Partner                        19        81
+ contacts.Person                         24        69
+ contacts.Role                           4         0
+ contacts.RoleType                       4         5
+ contenttypes.ConcreteModel              2         0
+ contenttypes.ContentType                4         30
+ contenttypes.FooWithBrokenAbsoluteUrl   3         0
+ contenttypes.FooWithUrl                 3         0
+ contenttypes.FooWithoutUrl              2         0
+ contenttypes.ProxyModel                 2         0
+ countries.City                          8         61
+ countries.Country                       6         8
+ countries.Language                      5         0
+ lino_patrols.Area                       4         4
+ lino_patrols.Employee                   28        59
+ lino_patrols.Member                     3         14
+ lino_patrols.Patrol                     6         50
+ lino_patrols.Team                       7         7
+ lino_patrols.WorkDay                    4         150
+ sessions.Session                        3         4
+ ui.HelpText                             4         2
+ ui.SiteConfig                           4         1
+ ui.TextFieldTemplate                    6         2
+ users.Authority                         3         0
+ users.Membership                        3         0
+ users.Team                              4         0
+ users.User                              12        3
+======================================= ========= =======
+"""
 
-class DemoTest(RemoteAuthTestCase):
-    #~ fixtures = 'std demo'.split()
-    fixtures = settings.SITE.demo_fixtures
-    
+
 class QuickTest(RemoteAuthTestCase):
-    maxDiff = None
 
 
     def test00(self):
@@ -63,10 +97,18 @@ class QuickTest(RemoteAuthTestCase):
         self.user_root = settings.SITE.user_model(username='root',language='en',profile='900')
         self.user_root.save()
         
+        
+class DemoTest(RemoteAuthTestCase):
+    maxDiff = None
+    #~ fixtures = 'std demo'.split()
+    fixtures = settings.SITE.demo_fixtures
+    
+    def test001(self):
         """
-        Tests error handling when printing a contract whose type's 
-        name contains non-ASCII char.
-        Created :blogref:`20110615`.
-        See the source code at :srcref:`/lino/apps/pcsw/tests/pcsw_tests.py`.
+        test whether the demo fixtures load correctly.
         """
+    
+        s = settings.SITE.get_db_overview_rst()
+        #~ print s
+        self.assertEqual(s,DEMO_OVERVIEW)
         
