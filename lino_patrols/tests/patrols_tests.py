@@ -47,7 +47,7 @@ from djangosite.utils.djangotest import RemoteAuthTestCase
 #~ contacts = dd.resolve_app('contacts')
 
 DEMO_OVERVIEW = """\
-10 applications: ui, sessions, about, contenttypes, users, changes, countries, contacts, lino_patrols, djangosite.
+10 applications: sessions, about, contenttypes, system, users, changes, countries, contacts, lino_patrols, djangosite.
 30 models:
 ======================================= ========= =======
  Name                                    #fields   #rows
@@ -75,9 +75,9 @@ DEMO_OVERVIEW = """\
  lino_patrols.Team                       7         7
  lino_patrols.WorkDay                    4         150
  sessions.Session                        3         4
- ui.HelpText                             4         2
- ui.SiteConfig                           4         1
- ui.TextFieldTemplate                    6         2
+ system.HelpText                         4         2
+ system.SiteConfig                       4         1
+ system.TextFieldTemplate                6         2
  users.Authority                         3         0
  users.Membership                        3         0
  users.Team                              4         0
@@ -110,5 +110,5 @@ class DemoTest(RemoteAuthTestCase):
     
         s = settings.SITE.get_db_overview_rst()
         #~ print s
-        self.assertEqual(s,DEMO_OVERVIEW)
+        self.assertEqual(DEMO_OVERVIEW,s)
         
