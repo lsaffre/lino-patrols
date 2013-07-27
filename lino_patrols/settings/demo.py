@@ -8,7 +8,7 @@ class Site(Site):
     title = "Lino-Patrols demo"
   
     #~ languages = ['en']
-    languages = 'de fr nl'
+    languages = 'en fr nl'
     #~ languages = ['de','fr']
     #~ languages = ['fr','de']
     #~ languages = ['de']

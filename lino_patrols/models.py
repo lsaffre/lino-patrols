@@ -13,10 +13,11 @@
 ## along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
 """
-Contains application-specific models and tables that have not yet been 
-moved into a separate module because they are really very PCSW specific.
+The `models` module for :mod:`lino_faggio`.
 
 """
+
+from __future__ import unicode_literals
 
 import logging
 logger = logging.getLogger(__name__)
