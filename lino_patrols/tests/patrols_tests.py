@@ -54,7 +54,7 @@ DEMO_OVERVIEW = """\
 --------------------------------------- --------- -------
  changes.Change                          9         0
  contacts.Company                        23        12
- contacts.CompanyType                    7         11
+ contacts.CompanyType                    7         16
  contacts.Partner                        19        81
  contacts.Person                         24        69
  contacts.Role                           4         0
@@ -65,7 +65,7 @@ DEMO_OVERVIEW = """\
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
  contenttypes.ProxyModel                 2         0
- countries.City                          8         61
+ countries.City                          8         62
  countries.Country                       6         8
  countries.Language                      5         0
  lino_patrols.Area                       4         4
