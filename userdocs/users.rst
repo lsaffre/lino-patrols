@@ -40,7 +40,7 @@ The table of available :ref:`patrols.users.Team` records on this site.
 
 The demo site has the following teams:
 
-.. django2rst:: settings.SITE.login('rolf').show(users.Teams)
+.. django2rst:: settings.SITE.login('robin').show(users.Teams)
 
 
 
@@ -60,8 +60,6 @@ User Profile
 
 A user profile is a combination of access rights and permission sets. 
 
-
-
 .. actor:: lino.UserProfiles
 
 
@@ -70,15 +68,12 @@ User Profiles
 
 The list of user profiles available on this site. 
 
-In the demo database, alice and hubert share the same profile 
-while melanie has a different profile.
-
-.. django2rst:: settings.SITE.login('rolf').show(lino.UserProfiles)
+.. django2rst:: settings.SITE.login('robin').show(lino.UserProfiles)
 
 
 
 
-Référence
+Reference
 =========
 
 
