@@ -228,19 +228,30 @@ class PatrolsByArea(Patrols):
     auto_fit_column_widths = True
     
     
-
 if False:
+    
+    class DayTypes(dd.ChoiceList):
+        verbose_name = _("Day Type")
+        verbose_name_plural = _("Day Types")
         
-    class Day(dd.Model):
+    add = WorkDayTypes.add_item
+    add('10', _("Normal"),'normal')
+    add('20', _("Weekend"),'weekend')
+    add('30', _("Feast"),'feast')
+
+
+    class Day(dd.BabelNamed):
         
         class Meta:
             verbose_name = _("Day") 
             verbose_name_plural = _("Days") 
         
         date = models.DateField(verbose_name=_("Date"),unique=True)
+        type = DayTypes.field()
         
     class Days(dd.Table):
         model = Day
+        help_text = _("One entry per calendar date.")
     
 class WorkDayTypes(dd.ChoiceList):
     verbose_name = _("WorkDay Type")

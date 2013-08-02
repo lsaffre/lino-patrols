@@ -28,5 +28,4 @@ Lino-patrols différencie les types de Partenaires suivants:
 
 .. actor:: countries.Countries
 
-.. actor:: countries.Languages
 
