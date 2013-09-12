@@ -14,7 +14,7 @@
 
 SETUP_INFO = dict(name='lino-patrols',
       version='0.0.2', 
-      install_requires=['lino>=1.6.7'],
+      install_requires=['lino'],
       test_suite = 'tests',
       description="A Lino application for managing patrols",
       long_description="""\
