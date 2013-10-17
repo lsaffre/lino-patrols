@@ -8,8 +8,8 @@ Welcome to the *Lino-Patrols* project homepage.
 
 .. py2rst::
 
-  import lino_patrols
-  print lino_patrols.SETUP_INFO['long_description']
+  from lino_patrols import SETUP_INFO
+  print SETUP_INFO['long_description']
 
 This document is meant for system administrators and developers.
 there is also a :ref:`user manual <patrols.userdocs>`,
