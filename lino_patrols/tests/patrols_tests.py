@@ -65,7 +65,7 @@ DEMO_OVERVIEW = """\
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
  contenttypes.ProxyModel                 2         0
- countries.City                          8         72
+ countries.City                          8         73
  countries.Country                       6         8
  lino_patrols.Area                       4         4
  lino_patrols.Employee                   28        59
