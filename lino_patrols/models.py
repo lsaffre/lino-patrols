@@ -13,7 +13,7 @@
 ## along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
 """
-The `models` module for :mod:`lino_faggio`.
+The :xfile:`models` module for :mod:`lino_faggio`.
 
 """
 

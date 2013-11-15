@@ -26,6 +26,8 @@ class Site(Site):
     
     demo_fixtures = 'std few_countries few_cities demo demo2'.split()
     
+    auto_configure_logger_names = 'djangosite north lino lino_patrols'
+    
     #~ migration_module = 'lino_patrols.migrate'
     
     userdocs_prefix = 'patrols.'
@@ -58,11 +60,13 @@ class Site(Site):
         yield 'lino.modlib.contacts'
         
         yield 'lino_patrols'
+        
+        
       
 
 #~ SITE = Site(globals())
 
-LOGGING['logger_names'] = 'djangosite north lino lino_patrols'
+#~ LOGGING['logger_names'] = 'djangosite north lino lino_patrols'
 #~ LOGGING.update(loggers='djangosite north lino lino_welfare')
 #~ print 20130409, __file__, LOGGING
 
