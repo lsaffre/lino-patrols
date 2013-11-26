@@ -1,16 +1,16 @@
 # -*- coding: UTF-8 -*-
 ## Copyright 2013 Luc Saffre
-## This file is part of the Lino project.
-## Lino is free software; you can redistribute it and/or modify 
+## This file is part of the Lino Patrols project.
+## Lino Patrols is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
 ## the Free Software Foundation; either version 3 of the License, or
 ## (at your option) any later version.
-## Lino is distributed in the hope that it will be useful, 
+## Lino Patrols is distributed in the hope that it will be useful,
 ## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
+## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ## GNU General Public License for more details.
 ## You should have received a copy of the GNU General Public License
-## along with Lino; if not, see <http://www.gnu.org/licenses/>.
+## along with Lino Patrols; if not, see <http://www.gnu.org/licenses/>.
 
 """
 """
@@ -23,18 +23,12 @@ ONE_DAY = datetime.timedelta(days=1)
 
 from django.db import models
 from django.conf import settings
-from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext as _
 
 
 from lino import dd
 from lino.utils import mti
 from lino.utils import i2d, Cycler
-from lino.utils.instantiator import Instantiator
-from lino.core.dbutils import resolve_model
-from north.dbutils import babel_values
-#~ from north.dbutils import babel_values as babelkw
-from north.dbutils import field2kw, babelkw
 
 
 contacts = dd.resolve_app('contacts')
@@ -50,8 +44,8 @@ L = patrols.WorkDayTypes.leave
 H = patrols.WorkDayTypes.holiday
 S = patrols.WorkDayTypes.sick
 WDT = Cycler(
-  W,W,W,W,W,L,L,
-  S,W,W,W,W,L,L)
+    W, W, W, W, W, L, L,
+    S, W, W, W, W, L, L)
   
 
 def objects():
