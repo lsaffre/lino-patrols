@@ -9,3 +9,4 @@ setup_from_project('lino_patrols','lino_patrols.settings.demo')
 
 #~ env.languages = 'en fr nl'.split()
 
+env.use_mercurial = False
