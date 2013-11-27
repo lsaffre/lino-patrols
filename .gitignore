@@ -9,7 +9,7 @@ syntax: glob
 *.zip
 *.doctrees
 tmp
-*/default.db
+default.db
 docs/media
 docs/api
 
