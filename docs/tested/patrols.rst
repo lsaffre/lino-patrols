@@ -10,11 +10,11 @@ The following statement imports a set of often-used global names::
 >>> from lino.runtime import *
 
 We can now refer to every installed app via it's `app_label`.
-For example here is how we can verify here that the demo database 
-has three patrols and four areas:
+For example here are some simple Django operations to verify 
+that the demo database is initialized:
 
->>> patrols.Patrol.objects.count()
-3
->>> patrols.Area.objects.count()
+>>> lino_patrols.Patrol.objects.count()
+50
+>>> lino_patrols.Area.objects.count()
 4
 

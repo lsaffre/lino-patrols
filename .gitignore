@@ -13,6 +13,6 @@ default.db
 docs/media
 docs/api
 
-*/media
+media
 *.egg-info
 .build

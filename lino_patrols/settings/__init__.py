@@ -24,7 +24,7 @@ class Site(Site):
     url = setup_info['url'] # "http://code.google.com/p/lino-welfare/"
     verbose_name = "Lino Patrols"
     
-    demo_fixtures = 'std few_countries few_cities demo demo2'.split()
+    demo_fixtures = 'std demo demo2'.split()
     
     auto_configure_logger_names = 'djangosite north lino lino_patrols'
     

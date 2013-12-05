@@ -14,6 +14,7 @@ using `manage.py run`.
    :maxdepth: 1
   
    patrols
+   general
 
 
 

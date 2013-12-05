@@ -36,7 +36,7 @@ Teams
 =============
 
 
-The table of available :ref:`patrols.users.Team` records on this site.
+The table of available :ddref:`patrols.users.Team` records on this site.
 
 The demo site has the following teams:
 
