@@ -33,7 +33,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.Role              4         0
  contacts.RoleType          4         5
  contenttypes.ContentType   4         24
- countries.City             8         75
+ countries.Place            8         75
  countries.Country          6         8
  lino_patrols.Area          4         4
  lino_patrols.Employee      28        59
