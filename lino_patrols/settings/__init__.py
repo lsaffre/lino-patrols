@@ -49,8 +49,7 @@ class Site(Site):
         self.on_each_app('setup_quicklinks',ar,tb)
         
     def get_installed_apps(self):
-        for a in super(Site,self).get_installed_apps():
-            yield a
+        yield super(Site,self).get_installed_apps()
             
         yield 'django.contrib.contenttypes'
         yield 'lino.modlib.system'
