@@ -1,10 +1,10 @@
 .. _patrols:
 
 ============
-Lino-Patrols 
+Lino Patrols 
 ============
 
-Welcome to the *Lino-Patrols* project homepage.
+Welcome to the *Lino Patrols* project homepage.
 
 .. py2rst::
 
