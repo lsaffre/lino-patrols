@@ -28,8 +28,6 @@ class Site(Site):
     
     auto_configure_logger_names = 'djangosite north lino lino_patrols'
     
-    #~ migration_module = 'lino_patrols.migrate'
-    
     userdocs_prefix = 'patrols.'
     
     #~ project_model = 'contacts.Person'
