@@ -35,7 +35,7 @@ from django.utils.translation import string_concat
 from django.utils.encoding import force_unicode 
 from django.utils.functional import lazy
 
-from lino import dd
+from lino import dd, rt
 
 from lino.mixins.printable import DirectPrintAction, Printable
 #~ from lino.mixins.reminder import ReminderEntry
