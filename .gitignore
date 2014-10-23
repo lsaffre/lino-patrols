@@ -16,3 +16,4 @@ docs/api
 media
 *.egg-info
 .build
+.idea
