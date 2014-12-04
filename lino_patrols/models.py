@@ -46,8 +46,8 @@ from lino.core import actions
 contacts = dd.resolve_app('contacts')
 countries = dd.resolve_app('countries')
 
-#~ class Employee(dd.Human,dd.Born):
-class Employee(contacts.Person,dd.Born):
+#~ class Employee(mixins.Human,mixins.Born):
+class Employee(contacts.Person,mixins.Born):
     
     class Meta:
         verbose_name = _("Employee") 
@@ -81,7 +81,7 @@ class Employees(dd.Table):
     MembersByEmployee TeamsByChef WorkDaysByEmployee
     """
     
-class Area(dd.BabelNamed):
+class Area(mixins.BabelNamed):
     
     class Meta:
         verbose_name = _("Area") 
@@ -95,7 +95,7 @@ class Areas(dd.Table):
     """
     
 
-class Team(dd.BabelNamed):
+class Team(mixins.BabelNamed):
     
     class Meta:
         verbose_name = _("Team") 
@@ -240,7 +240,7 @@ if False:
     add('30', _("Feast"),'feast')
 
 
-    class Day(dd.BabelNamed):
+    class Day(mixins.BabelNamed):
         
         class Meta:
             verbose_name = _("Day") 
