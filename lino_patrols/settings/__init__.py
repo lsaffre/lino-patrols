@@ -26,7 +26,7 @@ class Site(Site):
     
     demo_fixtures = 'std demo demo2'.split()
     
-    auto_configure_logger_names = 'djangosite north lino lino_patrols'
+    auto_configure_logger_names = 'djangosite lino lino_patrols'
     
     userdocs_prefix = 'patrols.'
     
@@ -49,7 +49,7 @@ class Site(Site):
     def get_installed_apps(self):
         yield super(Site,self).get_installed_apps()
             
-        yield 'django.contrib.contenttypes'
+        yield 'lino.modlib.contenttypes'
         yield 'lino.modlib.system'
         yield 'lino.modlib.users'
         yield 'lino.modlib.changes'
@@ -63,8 +63,8 @@ class Site(Site):
 
 #~ SITE = Site(globals())
 
-#~ LOGGING['logger_names'] = 'djangosite north lino lino_patrols'
-#~ LOGGING.update(loggers='djangosite north lino lino_welfare')
+#~ LOGGING['logger_names'] = 'djangosite lino lino_patrols'
+#~ LOGGING.update(loggers='djangosite lino lino_welfare')
 #~ print 20130409, __file__, LOGGING
 
 #~ TIME_ZONE = 'Europe/Brussels'

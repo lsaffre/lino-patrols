@@ -35,19 +35,13 @@ from django.utils.translation import string_concat
 from django.utils.encoding import force_unicode 
 from django.utils.functional import lazy
 
-from lino import dd, rt
-
-from lino.mixins.printable import DirectPrintAction, Printable
-#~ from lino.mixins.reminder import ReminderEntry
-from lino.core import actions
-#~ from lino.core import changes
-
+from lino import dd, mixins
 
 contacts = dd.resolve_app('contacts')
 countries = dd.resolve_app('countries')
 
-#~ class Employee(mixins.Human,mixins.Born):
-class Employee(contacts.Person,mixins.Born):
+
+class Employee(contacts.Person, mixins.Born):
     
     class Meta:
         verbose_name = _("Employee") 
