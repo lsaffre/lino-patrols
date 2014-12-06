@@ -13,7 +13,7 @@ ROOTDIR = Path(__file__).parent.parent
 # load  SETUP_INFO:
 execfile(ROOTDIR.child('lino_patrols', 'project_info.py'), globals())
 
-from djangosite.utils.pythontest import TestCase
+from lino.utils.pythontest import TestCase
 
 
 class BaseTestCase(TestCase):
