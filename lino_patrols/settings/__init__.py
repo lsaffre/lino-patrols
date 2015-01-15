@@ -26,7 +26,7 @@ class Site(Site):
     
     demo_fixtures = 'std demo demo2'.split()
     
-    auto_configure_logger_names = 'djangosite lino lino_patrols'
+    auto_configure_logger_names = 'lino lino_patrols'
     
     userdocs_prefix = 'patrols.'
     
@@ -41,13 +41,12 @@ class Site(Site):
     
     #~ index_view_action = "pcsw.Home"
     
-
-    def setup_quicklinks(self,ar,tb):
-        tb.add_action('lino_patrols.Patrols')
-        self.on_each_app('setup_quicklinks',ar,tb)
+    def setup_quicklinks(self, ar, tb):
+        tb.add_action('patrols.Patrols')
+        self.on_each_app('setup_quicklinks', ar, tb)
         
     def get_installed_apps(self):
-        yield super(Site,self).get_installed_apps()
+        yield super(Site, self).get_installed_apps()
             
         yield 'lino.modlib.contenttypes'
         yield 'lino.modlib.system'
@@ -56,7 +55,7 @@ class Site(Site):
         yield 'lino.modlib.countries'
         yield 'lino.modlib.contacts'
         
-        yield 'lino_patrols'
+        yield 'lino_patrols.patrols'
         
         
       

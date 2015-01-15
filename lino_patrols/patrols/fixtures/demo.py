@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-## Copyright 2013 Luc Saffre
+## Copyright 2013-2015 Luc Saffre
 ## This file is part of the Lino Patrols project.
 ## Lino Patrols is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -33,11 +33,11 @@ from lino.utils import i2d, Cycler
 
 contacts = dd.resolve_app('contacts')
 users = dd.resolve_app('users')
-patrols = dd.resolve_app('lino_patrols')
-Team = dd.resolve_model('lino_patrols.Team')
-Area = dd.resolve_model('lino_patrols.Area')
-Employee = dd.resolve_model('lino_patrols.Employee')
-Member = dd.resolve_model('lino_patrols.Member')
+patrols = dd.resolve_app('patrols')
+Team = dd.resolve_model('patrols.Team')
+Area = dd.resolve_model('patrols.Area')
+Employee = dd.resolve_model('patrols.Employee')
+Member = dd.resolve_model('patrols.Member')
 
 W = patrols.WorkDayTypes.workday
 L = patrols.WorkDayTypes.leave

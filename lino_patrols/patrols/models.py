@@ -247,6 +247,7 @@ if False:
         model = Day
         help_text = _("One entry per calendar date.")
     
+
 class WorkDayTypes(dd.ChoiceList):
     verbose_name = _("WorkDay Type")
     verbose_name_plural = _("WorkDay Types")
@@ -257,7 +258,8 @@ add('20', _("Holiday"),'holiday')     # Férié / Feiertag
 add('30', _("Leave day"),'leave')   # Congé / Urlaub
 add('40', _("Sick"),'sick')         # Malade / Krank
 add('50', _("Absent"),'absent')      # Absent / Abwesend
-    
+
+
 class WorkDay(dd.Model):
     
     class Meta:
@@ -349,21 +351,4 @@ class EmployeesByWeek(Employees):
         return obj.get_workday(first_day_of_week(ar.param_values.week),2)
 
 
-
-MODULE_LABEL = _("Patrols")
-
-def setup_main_menu(site,ui,profile,m): 
-    m = m.add_menu("patrols",MODULE_LABEL)
-    m.add_action(Areas)
-    m.add_action(Employees)
-    m.add_action(EmployeesByWeek)
-    m.add_action(Teams)
-    m.add_action(Patrols)
-    #~ m.add_action(Days)
-
-def setup_explorer_menu(site,ui,profile,m): 
-    m = m.add_menu("patrols",MODULE_LABEL)
-    m.add_action(WorkDayTypes)
-    m.add_action(WorkDays)
-    m.add_action(Members)
 
