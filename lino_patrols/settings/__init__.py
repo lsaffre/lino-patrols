@@ -32,7 +32,6 @@ class Site(Site):
     
     #~ project_model = 'contacts.Person'
     #~ project_model = 'pcsw.Client'
-    user_model = 'users.User'
     
     #~ accounts_ref_length = 5
     
