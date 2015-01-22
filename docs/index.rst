@@ -11,10 +11,6 @@ Welcome to the *Lino Patrols* project homepage.
   from lino_patrols import SETUP_INFO
   print(SETUP_INFO['long_description'])
 
-This document is meant for system administrators and developers.
-there is also a :ref:`user manual <patrols.userdocs>`,
-which might be better suited for end-users.
-
 
 Content
 ========
@@ -24,7 +20,7 @@ Content
 
    install
    tested/index
-   API <api/lino_patrols>
+   api/index
    todo
    changes
    
