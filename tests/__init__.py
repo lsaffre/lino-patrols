@@ -17,7 +17,7 @@ from lino.utils.pythontest import TestCase
 
 
 class BaseTestCase(TestCase):
-    demo_settings_module = "lino_patrols.settings.demo"
+    django_settings_module = "lino_patrols.settings.demo"
     #~ default_environ = dict(DJANGO_SETTINGS_MODULE="lino_patrols.demo.settings")
     project_root = ROOTDIR
     
