@@ -8,9 +8,7 @@ General
 Some tests:
   
 >>> from __future__ import print_function
->>> from lino.runtime import *
->>> from django.utils import translation
->>> from pprint import pprint
+>>> from lino.api.doctest import *
 
 The test database
 -----------------
@@ -20,7 +18,7 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-11 apps: sessions, about, bootstrap3, lino, contenttypes, system, users, changes, countries, contacts, lino_patrols.
+11 apps: about, bootstrap3, lino, contenttypes, system, users, changes, countries, contacts, patrols, sessions.
 22 models:
 ========================== =========================== ========= =======
  Name                       Default table               #fields   #rows
@@ -36,12 +34,12 @@ Test whether :meth:`get_db_overview_rst
  contenttypes.HelpText      contenttypes.HelpTexts      4         2
  countries.Country          countries.Countries         6         8
  countries.Place            countries.Places            8         78
- lino_patrols.Area          lino_patrols.Areas          4         4
- lino_patrols.Employee      lino_patrols.Employees      29        59
- lino_patrols.Member        lino_patrols.Members        3         14
- lino_patrols.Patrol        lino_patrols.Patrols        6         50
- lino_patrols.Team          lino_patrols.Teams          7         7
- lino_patrols.WorkDay       lino_patrols.WorkDays       4         150
+ patrols.Area               patrols.Areas               4         4
+ patrols.Employee           patrols.Employees           29        59
+ patrols.Member             patrols.Members             3         14
+ patrols.Patrol             patrols.Patrols             6         50
+ patrols.Team               patrols.Teams               7         7
+ patrols.WorkDay            patrols.WorkDays            4         150
  sessions.Session           sessions.SessionTable       3         0
  system.SiteConfig          system.SiteConfigs          4         1
  system.TextFieldTemplate   system.TextFieldTemplates   5         2
