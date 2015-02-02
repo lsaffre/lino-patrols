@@ -1,7 +1,7 @@
 from atelier.fablib import *
 setup_from_fabfile(globals(), 'lino_patrols', 'lino_patrols.settings.demo')
 
-add_demo_project('.')
+add_demo_project('lino_patrols.settings.demo')
 
 #~ env.demo_database = 'lino_welfare.demo.settings'
 
