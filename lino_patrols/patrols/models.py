@@ -35,7 +35,8 @@ from django.utils.translation import string_concat
 from django.utils.encoding import force_unicode 
 from django.utils.functional import lazy
 
-from lino import dd, mixins
+from lino.api import dd
+from lino import mixins
 
 contacts = dd.resolve_app('contacts')
 countries = dd.resolve_app('countries')
