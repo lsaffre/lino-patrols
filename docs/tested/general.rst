@@ -18,8 +18,8 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-11 apps: about, bootstrap3, lino, contenttypes, system, users, changes, countries, contacts, patrols, sessions.
-22 models:
+12 apps: staticfiles, about, bootstrap3, lino, contenttypes, system, users, changes, countries, contacts, patrols, sessions.
+21 models:
 ========================== =========================== ========= =======
  Name                       Default table               #fields   #rows
 -------------------------- --------------------------- --------- -------
@@ -30,7 +30,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.Person            contacts.Persons            26        69
  contacts.Role              contacts.Roles              4         0
  contacts.RoleType          contacts.RoleTypes          4         5
- contenttypes.ContentType   contenttypes.ContentTypes   4         22
+ contenttypes.ContentType   contenttypes.ContentTypes   4         21
  contenttypes.HelpText      contenttypes.HelpTexts      4         2
  countries.Country          countries.Countries         6         8
  countries.Place            countries.Places            8         78
@@ -42,7 +42,6 @@ Test whether :meth:`get_db_overview_rst
  patrols.WorkDay            patrols.WorkDays            4         150
  sessions.Session           sessions.SessionTable       3         0
  system.SiteConfig          system.SiteConfigs          4         1
- system.TextFieldTemplate   system.TextFieldTemplates   5         2
  users.Authority            users.Authorities           3         0
  users.User                 users.Users                 13        3
 ========================== =========================== ========= =======
