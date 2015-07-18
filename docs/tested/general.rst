@@ -18,7 +18,7 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-12 apps: staticfiles, about, bootstrap3, lino, contenttypes, system, users, changes, countries, contacts, patrols, sessions.
+14 apps: staticfiles, about, bootstrap3, lino, appypod, printing, system, contenttypes, users, changes, countries, contacts, patrols, sessions.
 21 models:
 ========================== =========================== ========= =======
  Name                       Default table               #fields   #rows
