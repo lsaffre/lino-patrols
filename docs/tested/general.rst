@@ -16,10 +16,9 @@ General
 The test database
 -----------------
 
-Test whether :meth:`get_db_overview_rst 
-<lino_site.Site.get_db_overview_rst>` returns the expected result:
 
->>> print(settings.SITE.get_db_overview_rst()) 
+>>> from lino.utils.diag import analyzer
+>>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 15 apps: staticfiles, about, bootstrap3, lino_startup, appypod, printing, system, contenttypes, gfks, users, changes, countries, contacts, patrols, sessions.
 21 models:
