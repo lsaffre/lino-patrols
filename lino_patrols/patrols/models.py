@@ -170,7 +170,7 @@ class Patrol(dd.Model):
     area = models.ForeignKey(Area)
     team = models.ForeignKey(Team)
     remark = models.TextField(_("Remark"),blank=True)
-    state = PatrolStates.field(default=PatrolStates.scheduled.as_callable())
+    state = PatrolStates.field(default=PatrolStates.scheduled.as_callable)
     
     def __unicode__(self):
         return "%s %s %s" % (self.date,self.area,self.team)
