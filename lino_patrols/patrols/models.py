@@ -102,9 +102,12 @@ class Team(mixins.BabelNamed):
     chef = models.ForeignKey(Employee,verbose_name=_("Team leader"))
 
     @dd.displayfield(_("Team"))
-    def info(self,ar):
+    def info(self, ar):
+        if ar is None:
+            return ''
         return ar.obj2html(self)
         
+
 class Teams(dd.Table):
     model = Team
     detail_layout = """
