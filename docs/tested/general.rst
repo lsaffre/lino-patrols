@@ -20,7 +20,7 @@ The test database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-19 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, notifier, changes, office, countries, contacts, patrols, sessions.
+18 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, printing, system, contenttypes, gfks, users, notifier, changes, office, countries, contacts, patrols, sessions.
 22 models:
 ========================== ======================== ========= =======
  Name                       Default table            #fields   #rows
