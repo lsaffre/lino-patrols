@@ -20,7 +20,7 @@ The test database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-18 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, notifier, changes, office, countries, contacts, patrols, sessions.
+18 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, notify, changes, office, countries, contacts, patrols, sessions.
 22 models:
 ========================== ======================== ========= =======
  Name                       Default table            #fields   #rows
@@ -36,7 +36,7 @@ The test database
  countries.Country          countries.Countries      6         8
  countries.Place            countries.Places         8         78
  gfks.HelpText              gfks.HelpTexts           4         2
- notifier.Notification      notifier.Notifications   7         0
+ notify.Notification        notify.Notifications     7         0
  patrols.Area               patrols.Areas            4         4
  patrols.Employee           patrols.Employees        29        59
  patrols.Member             patrols.Members          3         14
