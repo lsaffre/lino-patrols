@@ -32,9 +32,9 @@ import decimal
 from django.conf import settings
 
 #from lino.igen import models
-#from lino.modlib.contacts.models import Contact, Companies
-#from lino.modlib.countries.models import Country
-#~ from lino.modlib.contacts.models import Companies
+#from lino_xl.lib.contacts.models import Contact, Companies
+#from lino_xl.lib.countries.models import Country
+#~ from lino_xl.lib.contacts.models import Companies
 
 from django.utils import translation
 from django.utils.encoding import force_unicode
