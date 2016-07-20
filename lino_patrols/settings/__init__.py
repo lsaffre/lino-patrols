@@ -26,7 +26,7 @@ class Site(Site):
     
     demo_fixtures = 'std demo demo2'.split()
     
-    auto_configure_logger_names = 'lino lino_patrols'
+    auto_configure_logger_names = 'atelier lino lino_patrols'
     
     userdocs_prefix = 'patrols.'
     
