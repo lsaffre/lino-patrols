@@ -17,3 +17,7 @@ media
 *.egg-info
 .build
 .idea
+
+.coverage
+.coverage.*
+.eggs
