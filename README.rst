@@ -1,11 +1,8 @@
-==========================
-lino-patrols README
-==========================
+============================
+The ``lino-patrols`` package
+============================
 
-A Lino application for managing patrols
 
-Description
------------
 
 Lino-Patrols is a `Lino <http://www.lino-framework.org>`_ 
 application for managing and planning patrols.
@@ -14,5 +11,3 @@ application for managing and planning patrols.
 soldiers, that are assigned to monitor a specific geographic area." 
 (`Wikipedia <http://en.wikipedia.org/wiki/Patrol>`__)
 
-
-Read more on http://patrols.lino-framework.org
