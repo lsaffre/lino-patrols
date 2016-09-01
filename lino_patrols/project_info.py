@@ -13,7 +13,7 @@
 ## along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
 SETUP_INFO = dict(name='lino-patrols',
-      version='0.0.2', 
+      version='0.0.3', 
       install_requires=['lino'],
       test_suite = 'tests',
       description="A Lino application for managing patrols",
