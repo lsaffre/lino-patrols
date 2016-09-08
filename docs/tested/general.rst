@@ -36,7 +36,7 @@ The test database
  countries.Country          countries.Countries     6         8
  countries.Place            countries.Places        8         78
  gfks.HelpText              gfks.HelpTexts          4         2
- notify.Notification        notify.Notifications    10        3
+ notify.Notification        notify.Notifications    9         3
  patrols.Area               patrols.Areas           4         4
  patrols.Employee           patrols.Employees       29        59
  patrols.Member             patrols.Members         3         14
