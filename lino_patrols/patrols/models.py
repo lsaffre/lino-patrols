@@ -32,7 +32,7 @@ from django.core.exceptions import MultipleObjectsReturned
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import string_concat
-from django.utils.encoding import force_unicode 
+from django.utils.encoding import force_text 
 from django.utils.functional import lazy
 
 from lino.api import dd
