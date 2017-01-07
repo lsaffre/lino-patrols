@@ -20,8 +20,8 @@ The test database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-18 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, notify, changes, office, countries, contacts, patrols, sessions.
-22 models:
+17 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, changes, office, countries, contacts, patrols, sessions.
+21 models:
 ========================== ======================= ========= =======
  Name                       Default table           #fields   #rows
 -------------------------- ----------------------- --------- -------
@@ -32,11 +32,10 @@ The test database
  contacts.Person            contacts.Persons        26        69
  contacts.Role              contacts.Roles          4         0
  contacts.RoleType          contacts.RoleTypes      4         5
- contenttypes.ContentType   gfks.ContentTypes       3         22
+ contenttypes.ContentType   gfks.ContentTypes       3         21
  countries.Country          countries.Countries     6         8
  countries.Place            countries.Places        8         78
  gfks.HelpText              gfks.HelpTexts          4         2
- notify.Message             notify.Messages         11        3
  patrols.Area               patrols.Areas           4         4
  patrols.Employee           patrols.Employees       29        59
  patrols.Member             patrols.Members         3         14
@@ -46,6 +45,6 @@ The test database
  sessions.Session           sessions.SessionTable   3         0
  system.SiteConfig          system.SiteConfigs      5         1
  users.Authority            users.Authorities       3         0
- users.User                 users.Users             16        3
+ users.User                 users.Users             14        3
 ========================== ======================= ========= =======
 <BLANKLINE>
