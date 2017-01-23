@@ -40,9 +40,9 @@ class Site(Site):
     
     #~ index_view_action = "pcsw.Home"
     
-    def setup_quicklinks(self, ar, tb):
+    def setup_quicklinks(self, user, tb):
         tb.add_action('patrols.Patrols')
-        self.on_each_app('setup_quicklinks', ar, tb)
+        self.on_each_app('setup_quicklinks', user, tb)
         
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
