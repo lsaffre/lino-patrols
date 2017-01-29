@@ -25,7 +25,7 @@ The test database
 ========================== ======================= ========= =======
  Name                       Default table           #fields   #rows
 -------------------------- ----------------------- --------- -------
- changes.Change             changes.Changes         9         0
+ changes.Change             changes.Changes         10        0
  contacts.Company           contacts.Companies      22        12
  contacts.CompanyType       contacts.CompanyTypes   7         16
  contacts.Partner           contacts.Partners       19        81
