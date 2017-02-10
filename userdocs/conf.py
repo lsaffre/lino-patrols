@@ -2,7 +2,7 @@
 
 import sys, os
 
-from atelier.sphinxconf import configure
+from lino.sphinxcontrib import configure
 configure(globals(), 'lino_patrols.settings.demo')
 
 extensions += ['lino.utils.actordoc']

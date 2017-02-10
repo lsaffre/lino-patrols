@@ -17,7 +17,7 @@ for n in 'atelier lino'.split():
     intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
 
 extensions = []
-from atelier.sphinxconf import configure
+from lino.sphinxcontrib import configure
 configure(globals(), 'lino_patrols.settings.demo')
 
 
