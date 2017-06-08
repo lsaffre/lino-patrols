@@ -32,7 +32,6 @@ from lino.utils import i2d, Cycler
 
 
 contacts = dd.resolve_app('contacts')
-users = dd.resolve_app('users')
 patrols = dd.resolve_app('patrols')
 Team = dd.resolve_model('patrols.Team')
 Area = dd.resolve_model('patrols.Area')
