@@ -28,8 +28,8 @@ The test database
  changes.Change             changes.Changes         10        0
  contacts.Company           contacts.Companies      22        12
  contacts.CompanyType       contacts.CompanyTypes   7         16
- contacts.Partner           contacts.Partners       19        81
- contacts.Person            contacts.Persons        26        69
+ contacts.Partner           contacts.Partners       20        81
+ contacts.Person            contacts.Persons        27        69
  contacts.Role              contacts.Roles          4         0
  contacts.RoleType          contacts.RoleTypes      4         5
  contenttypes.ContentType   gfks.ContentTypes       3         21
@@ -37,7 +37,7 @@ The test database
  countries.Place            countries.Places        8         78
  gfks.HelpText              gfks.HelpTexts          4         2
  patrols.Area               patrols.Areas           4         4
- patrols.Employee           patrols.Employees       29        59
+ patrols.Employee           patrols.Employees       30        59
  patrols.Member             patrols.Members         3         14
  patrols.Patrol             patrols.Patrols         6         50
  patrols.Team               patrols.Teams           7         7
