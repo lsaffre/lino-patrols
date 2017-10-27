@@ -6,11 +6,12 @@ General
 .. This document is part of the test suite.  
    To test only this  document, run:
 
-    $ python setup.py test -s tests.DocsTests.test_general
+    $ doctest docs/tested/general.rst
 
     doctest init:
 
-    >>> from __future__ import print_function
+    >>> import lino
+    >>> lino.startup('lino_patrols.settings.demo')
     >>> from lino.api.doctest import *
 
 The test database
@@ -20,7 +21,7 @@ The test database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-18 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, changes, office, xl, countries, contacts, patrols, sessions.
+18 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, changes, office, xl, countries, contacts, patrols, sessions.
 21 models:
 ========================== ======================= ========= =======
  Name                       Default table           #fields   #rows
