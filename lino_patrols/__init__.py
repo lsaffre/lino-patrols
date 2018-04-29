@@ -25,3 +25,4 @@ __version__ = SETUP_INFO['version']
 
 intersphinx_urls = dict(docs="http://patrols.lino-framework.org")
 srcref_url = 'https://github.com/lsaffre/lino-patrols/blob/master/%s'
+doc_trees = ['docs']
