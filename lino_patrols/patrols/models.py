@@ -99,7 +99,7 @@ class Team(mixins.BabelNamed):
     active_from = models.DateField(verbose_name=_("Active from"),null=True,blank=True)
     active_until = models.DateField(verbose_name=_("until"),null=True,blank=True)
     
-    chef = models.ForeignKey(Employee,verbose_name=_("Team leader"))
+    chef = dd.ForeignKey(Employee,verbose_name=_("Team leader"))
 
     @dd.displayfield(_("Team"))
     def info(self, ar):
@@ -127,9 +127,9 @@ class Member(dd.Model):
     class Meta:
         verbose_name = _("Member") 
         verbose_name_plural = _("Members") 
-    #~ patrol = models.ForeignKey(Patrol)
-    team = models.ForeignKey(Team)
-    employee = models.ForeignKey(Employee)
+    #~ patrol = dd.ForeignKey(Patrol)
+    team = dd.ForeignKey(Team)
+    employee = dd.ForeignKey(Employee)
     
     def __unicode__(self):
         return "%s %s" % (self.employee,self.team)
@@ -170,8 +170,8 @@ class Patrol(dd.Model):
         verbose_name_plural = _("Patrols") 
     
     date = models.DateField(verbose_name=_("Date"))
-    area = models.ForeignKey(Area)
-    team = models.ForeignKey(Team)
+    area = dd.ForeignKey(Area)
+    team = dd.ForeignKey(Team)
     remark = models.TextField(_("Remark"),blank=True)
     state = PatrolStates.field(default=PatrolStates.as_callable('scheduled'))
     
@@ -273,8 +273,8 @@ class WorkDay(dd.Model):
     
     date = models.DateField(verbose_name=_("Date"))
     type = WorkDayTypes.field() 
-    employee = models.ForeignKey(Employee)
-    #~ patrol = models.ForeignKey(Patrol,blank=True,null=True)
+    employee = dd.ForeignKey(Employee)
+    #~ patrol = dd.ForeignKey(Patrol,blank=True,null=True)
     
     #~ def full_clean(self):
         #~ super(WorkDay,self).full_clean()
@@ -342,15 +342,15 @@ class EmployeesByWeek(Employees):
         return kw
     
     
-    @dd.virtualfield(models.ForeignKey(WorkDay,verbose_name="Mon"))
+    @dd.virtualfield(dd.ForeignKey(WorkDay,verbose_name="Mon"))
     def mon(self,obj,ar=None):
         return obj.get_workday(first_day_of_week(ar.param_values.week))
         
-    @dd.virtualfield(models.ForeignKey(WorkDay,verbose_name="Tue"))
+    @dd.virtualfield(dd.ForeignKey(WorkDay,verbose_name="Tue"))
     def tue(self,obj,ar=None):
         return obj.get_workday(first_day_of_week(ar.param_values.week),1)
         
-    @dd.virtualfield(models.ForeignKey(WorkDay,verbose_name="Wed"))
+    @dd.virtualfield(dd.ForeignKey(WorkDay,verbose_name="Wed"))
     def wed(self,obj,ar=None):
         return obj.get_workday(first_day_of_week(ar.param_values.week),2)
 
