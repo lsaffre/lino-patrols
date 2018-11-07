@@ -44,6 +44,7 @@ Topic :: Office/Business :: Scheduling
 
 SETUP_INFO.update(packages=[
   'lino_patrols',
+  'lino_patrols.demo',
   'lino_patrols.patrols',
   'lino_patrols.patrols.fixtures',
   'lino_patrols.settings',

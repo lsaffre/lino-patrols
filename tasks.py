@@ -5,4 +5,4 @@ ns = setup_from_tasks(
     tolerate_sphinx_warnings=False,
     blogref_url='http://luc.lino-framework.org',
     cleanable_files=['docs/api/lino_patrols.*'],
-    demo_projects=['.'])
+    demo_projects=['lino_patrols.demo'])

@@ -1,9 +1,15 @@
+.. doctest docs/tested/patrols.rst
 .. _patrols.tested.patrols:
 
 Patrols
 =======
 
 .. include:: /include/tested.rst
+
+>>> from lino import startup
+>>> startup('lino_patrols.settings.demo')
+>>> from lino.api.doctest import *
+             
 
 The following statement imports a set of often-used global names::
 
