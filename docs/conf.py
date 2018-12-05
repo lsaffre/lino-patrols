@@ -11,10 +11,16 @@
 import sys, os
 
 from importlib import import_module
+
 intersphinx_mapping = {}
-for n in 'atelier lino'.split():
-    m = import_module(n)
-    intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
+from atelier.sphinxconf import interproject
+interproject.configure(
+    globals(), 'atelier etgen lino_book lino_patrols')
+
+# intersphinx_mapping = {}
+# for n in 'atelier lino'.split():
+#     m = import_module(n)
+#     intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
 
 extensions = []
 from lino.sphinxcontrib import configure
