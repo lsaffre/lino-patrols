@@ -1,26 +1,11 @@
 # -*- coding: UTF-8 -*-
-## Copyright 2013 Luc Saffre
-## This file is part of the Lino project.
-## Lino is free software; you can redistribute it and/or modify 
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation; either version 3 of the License, or
-## (at your option) any later version.
-## Lino is distributed in the hope that it will be useful, 
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-## GNU General Public License for more details.
-## You should have received a copy of the GNU General Public License
-## along with Lino; if not, see <http://www.gnu.org/licenses/>.
+# Copyright 2013-2019 Rumma & Ko Ltd
+# License: BSD (see file COPYING for details)
 
-"""
-The :xfile:`models` module for :mod:`lino_faggio`.
-
-"""
 
 from __future__ import unicode_literals
 
-import logging
-logger = logging.getLogger(__name__)
+import logging ; logger = logging.getLogger(__name__)
 
 import os
 import datetime
@@ -28,12 +13,7 @@ import datetime
 from django.db import models
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.core.exceptions import MultipleObjectsReturned
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import string_concat
-from django.utils.encoding import force_text 
-from django.utils.functional import lazy
 
 from lino.api import dd
 from lino import mixins
