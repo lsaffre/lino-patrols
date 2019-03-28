@@ -16,7 +16,7 @@
 This module contains "quick" tests that are run on a demo database 
 without any fixture. You can run only these tests by issuing::
 
-  python manage.py test lino_welfare.QuickTest
+  python manage.py test lino_patrols.QuickTest
 
 """
 
