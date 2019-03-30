@@ -4,7 +4,7 @@
 Patrols
 =======
 
-.. include:: /../docs/shared/include/tested.rst
+.. include:: /include/tested.rst
 
 >>> from lino import startup
 >>> startup('lino_patrols.settings.demo')
