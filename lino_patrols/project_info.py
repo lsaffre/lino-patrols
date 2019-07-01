@@ -28,7 +28,7 @@ soldiers, that are assigned to monitor a specific geographic area."
       author = 'Luc Saffre',
       author_email = 'luc.saffre@gmail.com',
       url="http://patrols.lino-framework.org",
-      license='GPL',
+      license='BSD-2-Clause',
       classifiers="""\
 Programming Language :: Python
 Programming Language :: Python :: 2
