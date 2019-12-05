@@ -3,7 +3,7 @@
 General
 =======
 
-.. This document is part of the test suite.  
+.. This document is part of the test suite.
    To test only this  document, run:
 
     $ doctest docs/tested/general.rst
@@ -46,6 +46,6 @@ The test database
  sessions.Session           sessions.SessionTable   3         0
  system.SiteConfig          system.SiteConfigs      5         1
  users.Authority            users.Authorities       3         0
- users.User                 users.Users             16        3
+ users.User                 users.AllUsers          16        3
 ========================== ======================= ========= =======
 <BLANKLINE>
