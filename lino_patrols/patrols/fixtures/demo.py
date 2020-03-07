@@ -15,11 +15,9 @@
 """
 """
 
-from __future__ import unicode_literals
-
 import decimal
 import datetime
-ONE_DAY = datetime.timedelta(days=1)
+from lino.utils import ONE_DAY
 
 from django.db import models
 from django.conf import settings
@@ -45,7 +43,7 @@ S = patrols.WorkDayTypes.sick
 WDT = Cycler(
     W, W, W, W, W, L, L,
     S, W, W, W, W, L, L)
-  
+
 
 def objects():
     bd = i2d(19500203)
@@ -58,18 +56,18 @@ def objects():
             e.is_chef = True
             e.is_member = False
             yield e
-        
+
     yield Area(name="North")
     yield Area(name="East")
     yield Area(name="South")
     yield Area(name="West")
-    
+
     CHEFS = Cycler(Employee.objects.filter(is_chef=True))
     MEMBERS = Cycler(Employee.objects.filter(is_member=True))
     AREAS = Cycler(patrols.Area.objects.all())
-    
+
     MEMBERS_PER_TEAM = 2
-    
+
     le = list(Employee.objects.filter(is_member=True))
     while len(le) > MEMBERS_PER_TEAM:
         name = '-'.join([o.last_name for o in le[:MEMBERS_PER_TEAM]])
@@ -78,28 +76,27 @@ def objects():
         for e in le[:MEMBERS_PER_TEAM]:
             yield Member(team=t,employee=e)
         le = le[MEMBERS_PER_TEAM:]
-    
+
     #~ yield Team(name="One",chef=CHEFS.pop())
     #~ yield Team(name="Two",chef=CHEFS.pop())
     #~ yield Team(name="Three",chef=CHEFS.pop())
-    
+
     TEAMS = Cycler(patrols.Team.objects.all())
-    
+
     d = settings.SITE.demo_date(-20)
     for i in range(50):
         yield patrols.Patrol(date=d,team=TEAMS.pop(),area=AREAS.pop())
         d += ONE_DAY
-        
+
     for p in patrols.Patrol.objects.all():
         yield patrols.WorkDay(date=p.date,employee=p.team.chef,type=WDT.pop())
         for m in p.team.member_set.all():
             yield patrols.WorkDay(date=p.date,employee=m.employee,type=WDT.pop())
-            
-            
+
+
     #~ d = settings.SITE.demo_date(-10)
     #~ for i in range(30):
         #~ for e in Employee.objects.all():
             #~ yield patrols.WorkDay(date=d,employee=e,type=WDT.pop())
         #~ d += ONE_DAY
         #~ WDT.pop()
-        
