@@ -42,7 +42,7 @@ The test database
  patrols.Patrol             patrols.Patrols         6         50
  patrols.Team               patrols.Teams           7         7
  patrols.WorkDay            patrols.WorkDays        4         150
- sessions.Session           sessions.SessionTable   3         0
+ sessions.Session           users.Sessions          3         ...
  system.SiteConfig          system.SiteConfigs      5         1
  users.Authority            users.Authorities       3         0
  users.User                 users.AllUsers          16        3
