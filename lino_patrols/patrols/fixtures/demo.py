@@ -21,7 +21,7 @@ from lino.utils import ONE_DAY
 
 from django.db import models
 from django.conf import settings
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 from lino.api import dd, rt
