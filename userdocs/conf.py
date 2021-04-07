@@ -8,7 +8,7 @@ configure(globals(), 'lino_patrols.settings.demo')
 extensions += ['lino.utils.actordoc']
 extensions += ['lino.utils.screenshots']
 
-#~ Trigger loading of Djangos model cache in order to avoid side effects that 
+#~ Trigger loading of Djangos model cache in order to avoid side effects that
 #~ would occur when this happens later while importing one of the models modules.
 from django.conf import settings
 #~ settings.SITE.startup()
@@ -39,21 +39,8 @@ settings.SITE.title = "Lino-Patrols User Manual"
 #~ extensions.append('sphinxcontrib.autorun')
 
 
-primary_domain = 'py'
-
-
-
 # Add any paths that contain templates here, relative to this directory.
 #~ templates_path = ['.templates']
-
-# The suffix of source filenames.
-source_suffix = '.rst'
-
-# The encoding of source files.
-#source_encoding = 'utf-8'
-
-# The master toctree document.
-master_doc = 'index'
 
 # General information about the project.
 project = settings.SITE.title
@@ -87,7 +74,7 @@ version = '.'.join(release.split('.')[:2])
 # List of directories, relative to source directory, that shouldn't be searched
 # for source files.
 exclude_trees = [
-  '.build', 
+  '.build',
   ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
@@ -221,12 +208,12 @@ latex_documents = [
 # If false, no module index is generated.
 #latex_use_modindex = True
 
-#~ language = "en" # the source language. 
+#~ language = "en" # the source language.
 
 #~ show_source = True
 
 #~ srcref_base_uri="http://code.google.com/lino"
-#~ srcref_base_uri="http://code.google.com/p/lino/source/browse/#hg" 
+#~ srcref_base_uri="http://code.google.com/p/lino/source/browse/#hg"
 
 
 
@@ -237,5 +224,3 @@ latex_documents = [
 html_theme_options = dict(collapsiblesidebar=True,externalrefs=True)
 
 #~ todo_include_todos = True
-
-

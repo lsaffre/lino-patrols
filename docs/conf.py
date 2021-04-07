@@ -55,21 +55,8 @@ settings.SITE.title = "Lino Patrols Reference Manual"
 #~ extensions.append('sphinxcontrib.autorun')
 
 
-primary_domain = 'py'
-
-
-
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['.templates']
-
-# The suffix of source filenames.
-source_suffix = '.rst'
-
-# The encoding of source files.
-#source_encoding = 'utf-8'
-
-# The master toctree document.
-master_doc = 'index'
 
 # General information about the project.
 project = settings.SITE.title
@@ -206,7 +193,7 @@ htmlhelp_basename = 'patrols'
 #~ show_source = True
 
 #~ srcref_base_uri="http://code.google.com/lino"
-#~ srcref_base_uri="http://code.google.com/p/lino/source/browse/#hg" 
+#~ srcref_base_uri="http://code.google.com/p/lino/source/browse/#hg"
 
 
 extlinks = {
@@ -218,4 +205,3 @@ extlinks = {
   'djangoticket': ('http://code.djangoproject.com/ticket/%s', 'Django ticket #'),
   'lino': ('http://www.lino-framework.org%s.html', ''),
 }
-
