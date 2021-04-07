@@ -1,37 +1,27 @@
 # -*- coding: UTF-8 -*-
-## Copyright 2013-2016 Luc Saffre
-## This file is part of the Lino project.
-## Lino is free software; you can redistribute it and/or modify 
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation; either version 3 of the License, or
-## (at your option) any later version.
-## Lino is distributed in the hope that it will be useful, 
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
-## GNU General Public License for more details.
-## You should have received a copy of the GNU General Public License
-## along with Lino; if not, see <http://www.gnu.org/licenses/>.
+# Copyright 2013-2016 Luc Saffre
+# License: GNU Affero General Public License v3 (see file COPYING for details)
 
 SETUP_INFO = dict(name='lino-patrols',
-      version='0.0.3', 
+      version='0.0.3',
       install_requires=['lino'],
       test_suite = 'tests',
       description="A Lino application for managing patrols",
       long_description="""\
-Lino-Patrols is a `Lino <http://www.lino-framework.org>`_ 
+Lino-Patrols is a `Lino <https://www.lino-framework.org>`_
 application for managing and planning patrols.
 
 "A patrol is commonly a group of personnel, such as police officers or
-soldiers, that are assigned to monitor a specific geographic area." 
-(`Wikipedia <http://en.wikipedia.org/wiki/Patrol>`__)
+soldiers, that are assigned to monitor a specific geographic area."
+(`Wikipedia <https://en.wikipedia.org/wiki/Patrol>`__)
 """,
       author = 'Luc Saffre',
       author_email = 'luc.saffre@gmail.com',
-      url="http://patrols.lino-framework.org",
-      license='BSD-2-Clause',
+      url="https://github.com/lsaffre/lino-patrols",
+      license_files=['COPYING'],
       classifiers="""\
 Programming Language :: Python
-Programming Language :: Python :: 2
+Programming Language :: Python :: 3
 Development Status :: 1 - Planning
 Environment :: Web Environment
 Framework :: Django
@@ -73,5 +63,3 @@ add_package_data('lino_patrols',
 l = add_package_data('lino_patrols')
 for lng in 'fr de nl'.split():
     l.append('locale/%s/LC_MESSAGES/*.mo' % lng)
-    
-
