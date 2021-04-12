@@ -12,6 +12,6 @@ from .setup_info import SETUP_INFO
 # execfile(os.path.join(os.path.dirname(__file__), 'project_info.py'))
 __version__ = SETUP_INFO['version']
 
-intersphinx_urls = dict(docs="https://patrols.lino-framework.org")
-srcref_url = 'https://github.com/lsaffre/lino-patrols/blob/master/%s'
-doc_trees = ['docs']
+# intersphinx_urls = dict(docs="https://patrols.lino-framework.org")
+# srcref_url = 'https://github.com/lsaffre/lino-patrols/blob/master/%s'
+doc_trees = []
