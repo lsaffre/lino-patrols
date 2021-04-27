@@ -6,7 +6,7 @@ SETUP_INFO = dict(name='lino-patrols',
       version='0.0.3',
       install_requires=['lino'],
       test_suite = 'tests',
-      description="A Lino application for managing patrols",
+      description="A Lino Django application for managing patrols",
       long_description="""\
 Lino-Patrols is a `Lino <https://www.lino-framework.org>`_
 application for managing and planning patrols.
