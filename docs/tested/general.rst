@@ -45,6 +45,6 @@ The test database
  sessions.Session           users.Sessions          3         ...
  system.SiteConfig          system.SiteConfigs      5         1
  users.Authority            users.Authorities       3         0
- users.User                 users.AllUsers          16        3
+ users.User                 users.AllUsers          18        3
 ========================== ======================= ========= =======
 <BLANKLINE>
