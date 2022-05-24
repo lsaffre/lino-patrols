@@ -13,7 +13,7 @@ import sys, os
 from importlib import import_module
 
 intersphinx_mapping = {}
-from atelier.sphinxconf import interproject
+from rstgen.sphinxconf import interproject
 interproject.configure(
     globals(), 'atelier etgen lino_book lino_patrols')
 
