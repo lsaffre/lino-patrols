@@ -33,8 +33,8 @@ The test database
  contacts.Role              contacts.Roles          4         3
  contacts.RoleType          contacts.RoleTypes      5         5
  contenttypes.ContentType   gfks.ContentTypes       3         21
- countries.Country          countries.Countries     6         8
- countries.Place            countries.Places        9         78
+ countries.Country          countries.Countries     6         9
+ countries.Place            countries.Places        9         80
  gfks.HelpText              gfks.HelpTexts          4         2
  patrols.Area               patrols.Areas           4         4
  patrols.Employee           patrols.Employees       30        59

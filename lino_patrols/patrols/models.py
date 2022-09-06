@@ -1,9 +1,7 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2019 Rumma & Ko Ltd
+# Copyright 2013-2022 Rumma & Ko Ltd
 # License: GNU Affero General Public License v3 (see file COPYING for details)
 
-
-from __future__ import unicode_literals
 
 import logging ; logger = logging.getLogger(__name__)
 
@@ -22,22 +20,22 @@ contacts = dd.resolve_app('contacts')
 countries = dd.resolve_app('countries')
 
 
-class Employee(contacts.Person, mixins.Born):
-    
+class Employee(contacts.Person):
+
     class Meta:
-        verbose_name = _("Employee") 
-        verbose_name_plural = _("Employees") 
-    
+        verbose_name = _("Employee")
+        verbose_name_plural = _("Employees")
+
     is_member = models.BooleanField(_("Member"),default=True)
     is_chef = models.BooleanField(_("Chef"),default=False)
     #~ member_from = models.DateField(verbose_name=_("Active from"),null=True,blank=True)
     #~ member_until = models.DateField(verbose_name=_("until"),null=True,blank=True)
-    
+
     #~ chef_from = models.DateField(verbose_name=_("Active from"),null=True,blank=True)
     #~ chef_until = models.DateField(verbose_name=_("until"),null=True,blank=True)
 
     def get_workday(self,base,offset=0):
-        if base is None: 
+        if base is None:
             return None
         if offset:
             base += datetime.timedelta(days=offset)
@@ -45,40 +43,40 @@ class Employee(contacts.Person, mixins.Born):
             return WorkDay.objects.get(date=base,employee=self)
         except WorkDay.DoesNotExist:
             return None
-    
+
 
 class Employees(dd.Table):
     model = Employee
     column_names = "last_name first_name birth_date"
     detail_layout = """
-    id first_name last_name gender birth_date 
+    id first_name last_name gender birth_date
     is_member is_chef
     MembersByEmployee TeamsByChef WorkDaysByEmployee
     """
-    
+
 class Area(mixins.BabelNamed):
-    
+
     class Meta:
-        verbose_name = _("Area") 
+        verbose_name = _("Area")
         verbose_name_plural = _("Areas")
-        
+
 class Areas(dd.Table):
     model = Area
     detail_layout = """
-    id name 
+    id name
     PatrolsByArea
     """
-    
+
 
 class Team(mixins.BabelNamed):
-    
+
     class Meta:
-        verbose_name = _("Team") 
-        verbose_name_plural = _("Teams") 
-    
+        verbose_name = _("Team")
+        verbose_name_plural = _("Teams")
+
     active_from = models.DateField(verbose_name=_("Active from"),null=True,blank=True)
     active_until = models.DateField(verbose_name=_("until"),null=True,blank=True)
-    
+
     chef = dd.ForeignKey(Employee,verbose_name=_("Team leader"))
 
     @dd.displayfield(_("Team"))
@@ -86,12 +84,12 @@ class Team(mixins.BabelNamed):
         if ar is None:
             return ''
         return ar.obj2html(self)
-        
+
 
 class Teams(dd.Table):
     model = Team
     detail_layout = """
-    id name 
+    id name
     active_from active_until chef
     MembersByTeam PatrolsByTeam
     """
@@ -101,63 +99,63 @@ class TeamsByChef(Teams):
     master_key = 'chef'
     auto_fit_column_widths = True
     column_names = "info"
-    
-    
+
+
 class Member(dd.Model):
     class Meta:
-        verbose_name = _("Member") 
-        verbose_name_plural = _("Members") 
+        verbose_name = _("Member")
+        verbose_name_plural = _("Members")
     #~ patrol = dd.ForeignKey(Patrol)
     team = dd.ForeignKey(Team)
     employee = dd.ForeignKey(Employee)
-    
+
     def __unicode__(self):
         return "%s %s" % (self.employee,self.team)
-    
-    
+
+
 class Members(dd.Table):
     help_text = _("A member is when a given employee is part of a given team.")
     model = Member
-    
+
 #~ class MembersByPatrol(Members):
-    #~ master_key = 'patrol'    
-    #~ 
+    #~ master_key = 'patrol'
+    #~
 class MembersByTeam(Members):
     master_key = 'team'
     auto_fit_column_widths = True
-    
+
 class MembersByEmployee(Members):
-    master_key = 'employee'    
+    master_key = 'employee'
     auto_fit_column_widths = True
     label = _("Member of")
-    
+
 
 
 class PatrolStates(dd.ChoiceList):
     verbose_name = _("Patrol State")
     verbose_name_plural = _("Patrol States")
-    
+
 add = PatrolStates.add_item
-add('10', _("Scheduled"),'scheduled')    
+add('10', _("Scheduled"),'scheduled')
 add('20', _("Pending"),'pending')
 add('90', _("Done"),'done')
 
-    
+
 class Patrol(dd.Model):
-    
+
     class Meta:
-        verbose_name = _("Patrol") 
-        verbose_name_plural = _("Patrols") 
-    
+        verbose_name = _("Patrol")
+        verbose_name_plural = _("Patrols")
+
     date = models.DateField(verbose_name=_("Date"))
     area = dd.ForeignKey(Area)
     team = dd.ForeignKey(Team)
     remark = models.TextField(_("Remark"),blank=True)
     state = PatrolStates.field(default=PatrolStates.as_callable('scheduled'))
-    
+
     def __unicode__(self):
         return "%s %s %s" % (self.date,self.area,self.team)
-    
+
 class Patrols(dd.Table):
     help_text = _("A patrol is when a given team works in a given area on a given day.")
     model = Patrol
@@ -173,7 +171,7 @@ class Patrols(dd.Table):
     remark
     WorkDaysByPatrol
     """
-    
+
     @classmethod
     def get_request_queryset(self,ar):
         qs = super(Patrols,self).get_request_queryset(ar)
@@ -182,7 +180,7 @@ class Patrols(dd.Table):
         if ar.param_values.dates_until:
             qs = qs.filter(date__lte=ar.param_values.dates_until)
         return qs
-  
+
     @classmethod
     def get_title_tags(self,ar):
         for t in super(Patrols,self).get_title_tags(ar):
@@ -193,25 +191,25 @@ class Patrols(dd.Table):
             else:
                 yield _("-%s") % ar.param_values.dates_until
         yield _("%s-") % ar.param_values.dates_from
-    
-    
+
+
 class PatrolsByTeam(Patrols):
-    master_key = 'team'    
+    master_key = 'team'
     hidden_columns = 'team remark'
     auto_fit_column_widths = True
-    
+
 class PatrolsByArea(Patrols):
-    master_key = 'area'    
+    master_key = 'area'
     hidden_columns = 'area remark'
     auto_fit_column_widths = True
-    
-    
+
+
 if False:
-    
+
     class DayTypes(dd.ChoiceList):
         verbose_name = _("Day Type")
         verbose_name_plural = _("Day Types")
-        
+
     add = WorkDayTypes.add_item
     add('10', _("Normal"),'normal')
     add('20', _("Weekend"),'weekend')
@@ -219,23 +217,23 @@ if False:
 
 
     class Day(mixins.BabelNamed):
-        
+
         class Meta:
-            verbose_name = _("Day") 
-            verbose_name_plural = _("Days") 
-        
+            verbose_name = _("Day")
+            verbose_name_plural = _("Days")
+
         date = models.DateField(verbose_name=_("Date"),unique=True)
         type = DayTypes.field()
-        
+
     class Days(dd.Table):
         model = Day
         help_text = _("One entry per calendar date.")
-    
+
 
 class WorkDayTypes(dd.ChoiceList):
     verbose_name = _("WorkDay Type")
     verbose_name_plural = _("WorkDay Types")
-    
+
 add = WorkDayTypes.add_item
 add('10', _("Workday"),'workday')     # Travail / Arbeit
 add('20', _("Holiday"),'holiday')     # Férié / Feiertag
@@ -245,43 +243,43 @@ add('50', _("Absent"),'absent')      # Absent / Abwesend
 
 
 class WorkDay(dd.Model):
-    
+
     class Meta:
-        verbose_name = _("Day") 
-        verbose_name_plural = _("Days") 
+        verbose_name = _("Day")
+        verbose_name_plural = _("Days")
         unique_together = ['date','employee']
-    
+
     date = models.DateField(verbose_name=_("Date"))
-    type = WorkDayTypes.field() 
+    type = WorkDayTypes.field()
     employee = dd.ForeignKey(Employee)
     #~ patrol = dd.ForeignKey(Patrol,blank=True,null=True)
-    
+
     #~ def full_clean(self):
         #~ super(WorkDay,self).full_clean()
         #~ if self.type == WorkDayTypes.workday:
             #~ if not self.patrol:
                 #~ raise ValidationError("Workday without Patrol")
-                
+
     def __unicode__(self):
         return "%s %s %s" % (self.date,self.employee,self.type)
-    
+
 class WorkDays(dd.Table):
     model = WorkDay
     help_text = _("One entry per employee and date.")
     detail_layout = """
     date employee type
     """
-    
+
 def first_day_of_week(d):
     if d is None: return None
     if d.weekday() == 0: return d
     return d + datetime.timedelta(days=-d.weekday())
-    
+
 class WorkDaysByEmployee(WorkDays):
     master_key = 'employee'
     auto_fit_column_widths = True
     hidden_columns = 'id employee'
-    
+
 class WorkDaysByPatrol(WorkDays):
     label = _("Presences")
     master = Patrol
@@ -289,7 +287,7 @@ class WorkDaysByPatrol(WorkDays):
     column_names = 'employee type'
     #~ hidden_columns = 'id employee'
     #~ can_create = False
-    
+
     @classmethod
     def get_request_queryset(self,ar):
         #~ logger.info("20121010 Clients.get_request_queryset %s",ar.param_values)
@@ -302,9 +300,9 @@ class WorkDaysByPatrol(WorkDays):
         #~ return WorkDay.objects.filter(date=patrol.date,employee__in=el)
         return WorkDay.objects.filter(date=patrol.date,employee__id__in=el)
         #~ return qs
-            
-    
-    
+
+
+
 class EmployeesByWeek(Employees):
     label = _("Employees by Week")
     parameters = dict(
@@ -314,25 +312,22 @@ class EmployeesByWeek(Employees):
     #~ column_names = "last_name first_name mon tue wed thu fri sat sun"
     column_names = "last_name first_name mon tue wed"
     auto_fit_column_widths = True
-    
+
     @classmethod
     def param_defaults(self,ar,**kw):
         kw = super(EmployeesByWeek,self).param_defaults(ar,**kw)
         kw.update(week=first_day_of_week(datetime.date.today()))
         return kw
-    
-    
+
+
     @dd.virtualfield(dd.ForeignKey(WorkDay,verbose_name="Mon"))
     def mon(self,obj,ar=None):
         return obj.get_workday(first_day_of_week(ar.param_values.week))
-        
+
     @dd.virtualfield(dd.ForeignKey(WorkDay,verbose_name="Tue"))
     def tue(self,obj,ar=None):
         return obj.get_workday(first_day_of_week(ar.param_values.week),1)
-        
+
     @dd.virtualfield(dd.ForeignKey(WorkDay,verbose_name="Wed"))
     def wed(self,obj,ar=None):
         return obj.get_workday(first_day_of_week(ar.param_values.week),2)
-
-
-
