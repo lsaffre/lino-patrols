@@ -21,7 +21,7 @@ The test database
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 18 apps: lino, staticfiles, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, changes, office, xl, countries, contacts, patrols, sessions.
-21 models:
+20 models:
 ========================== ======================= ========= =======
  Name                       Default table           #fields   #rows
 -------------------------- ----------------------- --------- -------
@@ -32,10 +32,9 @@ The test database
  contacts.Person            contacts.Persons        27        69
  contacts.Role              contacts.Roles          4         3
  contacts.RoleType          contacts.RoleTypes      5         5
- contenttypes.ContentType   gfks.ContentTypes       3         21
+ contenttypes.ContentType   gfks.ContentTypes       3         20
  countries.Country          countries.Countries     6         9
  countries.Place            countries.Places        9         80
- gfks.HelpText              gfks.HelpTexts          4         2
  patrols.Area               patrols.Areas           4         4
  patrols.Employee           patrols.Employees       30        59
  patrols.Member             patrols.Members         3         14
