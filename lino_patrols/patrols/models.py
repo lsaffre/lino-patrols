@@ -3,7 +3,7 @@
 # License: GNU Affero General Public License v3 (see file COPYING for details)
 
 
-import logging ; logger = logging.getLogger(__name__)
+from lino import logger
 
 import os
 import datetime

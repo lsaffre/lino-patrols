@@ -10,10 +10,7 @@ without any fixture. You can run only these tests by issuing::
 
 """
 
-from __future__ import unicode_literals
-
-import logging
-logger = logging.getLogger(__name__)
+from lino import logger
 
 import decimal
 
