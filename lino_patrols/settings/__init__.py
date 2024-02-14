@@ -8,10 +8,11 @@ from lino.projects.std.settings import *
 import lino_patrols
 from lino_patrols import SETUP_INFO as setup_info
 
+
 class Site(Site):
 
     version = setup_info['version']
-    url = setup_info['url'] # "http://code.google.com/p/lino-welfare/"
+    url = setup_info['url']  # "http://code.google.com/p/lino-welfare/"
     verbose_name = "Lino Patrols"
 
     demo_fixtures = 'std demo demo2'.split()
@@ -44,8 +45,6 @@ class Site(Site):
         yield 'lino_xl.lib.contacts'
 
         yield 'lino_patrols.patrols'
-
-
 
 
 #~ SITE = Site(globals())

@@ -1,6 +1,5 @@
 # Copyright 2013-2014 Luc Saffre
 # License: GNU Affero General Public License v3 (see file COPYING for details)
-
 """
 The :mod:`lino_patrols.patrols` package provides models and
 functionality for managing patrols.
@@ -33,4 +32,3 @@ class Plugin(ad.Plugin):
         m.add_action(site.modules.patrols.WorkDayTypes)
         m.add_action('patrols.WorkDays')
         m.add_action('patrols.Members')
-
