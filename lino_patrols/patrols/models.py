@@ -192,10 +192,11 @@ class Patrols(dd.Table):
     @classmethod
     def get_request_queryset(self, ar):
         qs = super(Patrols, self).get_request_queryset(ar)
-        if ar.param_values.dates_from:
-            qs = qs.filter(date__gte=ar.param_values.dates_from)
-        if ar.param_values.dates_until:
-            qs = qs.filter(date__lte=ar.param_values.dates_until)
+        if (pv := ar.param_values) is None: return qs
+        if pv.dates_from:
+            qs = qs.filter(date__gte=pv.dates_from)
+        if pv.dates_until:
+            qs = qs.filter(date__lte=pv.dates_until)
         return qs
 
     @classmethod
