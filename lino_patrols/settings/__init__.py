@@ -35,8 +35,8 @@ class Site(Site):
         tb.add_action('patrols.Patrols')
         self.on_each_app('setup_quicklinks', user, tb)
 
-    def get_installed_apps(self):
-        yield super(Site, self).get_installed_apps()
+    def get_installed_plugins(self):
+        yield super(Site, self).get_installed_plugins()
 
         yield 'lino.modlib.gfks'
         yield 'lino.modlib.users'
