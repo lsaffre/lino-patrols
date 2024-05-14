@@ -17,10 +17,9 @@ The test database
 -----------------
 
 
->>> from lino.utils.diag import analyzer
->>> print(analyzer.show_db_overview())
+>>> analyzer.show_db_overview()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-18 apps: lino, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, changes, office, xl, countries, contacts, patrols, staticfiles, sessions.
+18 plugins: lino, about, jinja, bootstrap3, extjs, printing, system, contenttypes, gfks, users, changes, office, xl, countries, contacts, patrols, staticfiles, sessions.
 20 models:
 ========================== ======================= ========= =======
  Name                       Default table           #fields   #rows
