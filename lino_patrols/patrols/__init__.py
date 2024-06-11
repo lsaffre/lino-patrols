@@ -18,7 +18,7 @@ class Plugin(ad.Plugin):
 
     verbose_name = _("Patrols")
 
-    def setup_main_menu(self, site, profile, m):
+    def setup_main_menu(self, site, profile, m, ar=None):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action('patrols.Areas')
         m.add_action('patrols.Employees')
@@ -27,7 +27,7 @@ class Plugin(ad.Plugin):
         m.add_action('patrols.Patrols')
         #~ m.add_action('patrols.Days')
 
-    def setup_explorer_menu(self, site, profile, m):
+    def setup_explorer_menu(self, site, profile, m, ar=None):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action(site.modules.patrols.WorkDayTypes)
         m.add_action('patrols.WorkDays')
