@@ -41,28 +41,4 @@ SETUP_INFO.update(packages=[
     'lino_patrols.tests',
 ])
 
-SETUP_INFO.update(
-    message_extractors={
-        'lino_patrols': [
-            ('**/cache/**', 'ignore', None),
-            ('**.py', 'python', None),
-            ('**.js', 'javascript', None),
-            ('**/templates_jinja/**.html', 'jinja2', None),
-        ],
-    })
-
 SETUP_INFO.update(package_data=dict())
-
-
-def add_package_data(package, *patterns):
-    l = SETUP_INFO['package_data'].setdefault(package, [])
-    l.extend(patterns)
-    return l
-
-
-add_package_data('lino_patrols', 'config/patrols/Patrol/*.odt',
-                 'config/patrols/Overview/*.odt')
-
-l = add_package_data('lino_patrols')
-for lng in 'fr de nl'.split():
-    l.append('locale/%s/LC_MESSAGES/*.mo' % lng)
